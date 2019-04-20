@@ -42,3 +42,37 @@ function readFile(fileName) {
 	}
 	return file;
 }
+/**
+	getInfo(directory) : This function reads the info.txt file in the specified 
+	folder and returns the info as a JSON object.
+*/
+function getInfo(directory) {
+	let info = readFile("places/"+directory+"/info.txt");
+	let lines = info.split('\n');
+	let place = {"name": lines[0], "address": lines[1], "rating": lines[2]}
+	return place;
+}
+
+// GET:
+console.log('web service started');
+app.get('/', function (req, res) {
+	res.header("Access-Control-Allow-Origin", "*");
+
+	// get query parameters:
+	let mode = req.query.mode;
+	let location = req.query.place;
+
+	let places = fs.readdirSync("places");
+	if (mode === "listinfo") {
+		let places = [];
+		for (let i = 0; i < places.length; i ++) {
+			let folder = places[i];
+			let place = getInfo(folder);
+			places[i] = place;
+		}
+		places= {places};
+		res.send(JSON.stringify(places));
+	}
+});
+
+app.listen(3000);

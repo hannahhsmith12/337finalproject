@@ -9,7 +9,7 @@ h1 {
 	text-align: center;
 }
 
-#homepage {
+#main {
 	display: flex;
 	flex-direction: row;
 	width: 75%;
