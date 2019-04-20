@@ -1,0 +1,38 @@
+body {
+	color: black;
+	font-family: Helvetica, sans-serif;
+	text-align: center;
+}
+
+h1 {
+	font-size: 36px;
+	text-align: center;
+}
+
+#homepage {
+	display: flex;
+	flex-direction: row;
+	width: 75%;
+	margin: auto;
+	border: 5px dashed blue;
+}
+
+#map {
+	border: 2px solid red;
+	width: 50%;
+	height: 300px;
+}
+
+#reviews {
+	border: 2px solid black;
+	width: 50%;
+	height: 300px;
+}
+
+#submitreview {
+	border: 3px solid black;
+	width: 75%;
+	height: 500px;
+	margin: auto;
+}
+
