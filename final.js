@@ -39,10 +39,31 @@
 			.then(checkStatus)
 			.then(function (responseText) {
 				console.log(responseText);
+				loadPlaceList(responseText);
 			})
 			.catch(function (error) {
 				console.log(error);
 			});
+	}
+
+	function loadPlaceList(responseText) {
+		let json = JSON.parse(responseText);
+		let places = json.places;
+		for (let i = 0; i < places.length; i ++) {
+			// Load image:
+			//let img = document.createElement("img");
+			let h3 = document.createElement("h3");
+			h3.innerHTML = places[i].name;
+			let p1 = document.createElement("p");
+			p1.innerHTML = places[i].address;
+			let p2 = document.createElement("p");
+			p2.innerHTML = "Cleanliness Rating: " + places[i].rating;
+			let div = document.createElement("div");
+			div.appendChild(h3);
+			div.appendChild(p1);
+			div.appendChild(p2);
+			document.getElementById('places').appendChild(div);
+		}
 	}
 
 	function checkStatus(response) {
