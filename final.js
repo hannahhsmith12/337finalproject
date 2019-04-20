@@ -38,7 +38,7 @@
 		fetch(url)
 			.then(checkStatus)
 			.then(function (responseText) {
-				console.log(resposneText);
+				console.log(responseText);
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -46,6 +46,7 @@
 	}
 
 	function checkStatus(response) {
+		console.log(response.status);
 		if (response.status >= 200 && response.status < 300) {
 			return response.text();
 		} else if (response.status === 404) {

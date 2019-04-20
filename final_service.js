@@ -65,10 +65,12 @@ app.get('/', function (req, res) {
 	let places = fs.readdirSync("places");
 	if (mode === "listinfo") {
 		let places = [];
-		for (let i = 0; i < places.length; i ++) {
-			let folder = places[i];
+		let directories = fs.readdirSync("places");
+		for (let i = 1; i < directories.length; i ++) {
+			let folder = directories[i];
 			let place = getInfo(folder);
-			places[i] = place;
+			places[i-1] = place;
+			console.log("place: " + places[i]);
 		}
 		places= {places};
 		res.send(JSON.stringify(places));
